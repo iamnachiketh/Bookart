@@ -12,7 +12,6 @@ function App() {
         <Route path='/hotels' element={<List/>}/>
         <Route path='/hotel' element={<Hotel/>}/>
       </Routes>
-      
     </div>
   );
 }
