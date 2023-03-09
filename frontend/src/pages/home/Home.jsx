@@ -3,12 +3,13 @@ import Navbar from '../../components/navbar/Navbar';
 import "./Home.css";
 import Header from "../../components/header/Header";
 import Featured from '../../components/featured/Featured';
-import PropertyList from '../../components/propertyList/propertyList';
+import PropertyList from '../../components/propertyList/PropertyList';
 import FeaturedProperties from '../../components/featuredProperties/featuredProperties';
 import MailList from '../../components/mailList/MailList';
 import Footer from '../../components/footer/Footer';
 
 function Home() {
+  console.log("this is home!!!");
   return (
     <div>
       <Navbar/>

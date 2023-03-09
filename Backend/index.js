@@ -5,8 +5,11 @@ const authRoute = require('./routes/auth.js');
 const hotelRoute = require('./routes/hotels.js');
 const userRoute = require('./routes/users.js');
 const roomsRoute = require('./routes/rooms.js');
+const cors = require('cors');
 const cookieParser = require('cookie-parser'); 
 const app = express();
+
+app.use(cors());
 
 dotenv.config();
 app.use(cookieParser());

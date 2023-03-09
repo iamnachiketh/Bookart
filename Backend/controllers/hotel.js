@@ -1,3 +1,4 @@
+const Hotels = require('../models/Hotels');
 const Hotel = require('../models/Hotels');
 
 
@@ -36,8 +37,8 @@ deleteHotel = async (req, res, next) => {
 
 getaHotel = async (req, res, next) => {
     try {
-        const Hotel = await Hotel.findById(req.params.id);
-        res.status(200).json(Hotel);
+        const hotel = await Hotel.findById(req.params.id);
+        res.status(200).json(hotel);
     } catch (err) {
         next(err)
     }
@@ -55,10 +56,60 @@ getallHotel = async (req, res, next) => {
 
 }
 
+CountByCity = async (req, res, next) => {
+        const cities = req.query.cities.split(",");
+    try {
+        const list = await Promise.all(cities.map(city=>{
+            return Hotel.countDocuments({city:city})
+        }))
+        res.status(200).send(list);
+    } catch (err) {
+        next(err);
+    }
+
+}
+
+CountByType = async (req, res, next) => {
+    
+try {
+    const hotelCount = await Hotels.countDocuments({type:"hotels"});
+    const apartementCount = await Hotels.countDocuments({type:"apartement"});
+    const resortCount = await Hotels.countDocuments({type:"resort"});
+    const villaCount = await Hotels.countDocuments({type:"villa"});
+    const cabinCount = await Hotels.countDocuments({type:"cabin"});
+     
+    res.status(200).send([
+        {type:"hotels",count:hotelCount},
+        {type:"apartement",count:apartementCount},
+        {type:"resort",count:resortCount},
+        {type:"villa",count:villaCount},
+        {type:"cabin",count:cabinCount}
+    ])
+}catch (err) {
+    next(err);
+}
+
+}
+
+// CountByCity = async (req, res, next) => {
+//     const cities = req.query.cities.split(",");
+// try {
+//     const list = await Promise.all(cities.map(city=>{
+//         return Hotel.countDocuments({city:city})
+//     }))
+//     res.status(200).json(list);
+// } catch (err) {
+//     next(err);
+// }
+
+// }
+
 module.exports = {
     createHotel,
     updateHotel,
     deleteHotel,
     getaHotel,
-    getallHotel
+    getallHotel,
+    CountByCity,
+    CountByType
 }

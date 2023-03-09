@@ -1,10 +1,14 @@
 const express = require('express');
-const {createHotel} = require("../controllers/hotel");
+const {createHotel, CountByType} = require("../controllers/hotel");
 const {updateHotel} = require("../controllers/hotel");
 const {deleteHotel} = require("../controllers/hotel");
 const {getaHotel} = require("../controllers/hotel");
 const {getallHotel} = require("../controllers/hotel");
-const { verifyAdmin } = require('../utils/verifyToken');
+const {CountByCity} = require("../controllers/hotel");
+
+
+
+const { verifyAdmin } = require('../utils/verifyToken')
 
 const router = express.Router();
 
@@ -12,16 +16,25 @@ const router = express.Router();
 router.post('/create',verifyAdmin,createHotel);
 
 //UPDATE
-router.put('/:id',verifyAdmin,updateHotel);
+router.put('/updateahotel/:id',verifyAdmin,updateHotel);
 
 //DELETE
-router.delete('/:id',verifyAdmin,deleteHotel);
+router.delete('/deleteahotel/:id',verifyAdmin,deleteHotel);
 
 //GET
-router.get('/:id',getaHotel);
+router.get('/findahotel/:id',getaHotel);
 
 //GET ALL Authentication is in 42:00 so go and look at it!!!
-router.get('/',getallHotel);
+router.get('/getallhotel',getallHotel);
+
+//////////
+
+router.get('/CountByCity',CountByCity);
+
+//////////
+
+router.get('/CountByType',CountByType);
+
 
 
 module.exports = router;
