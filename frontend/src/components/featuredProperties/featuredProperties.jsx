@@ -1,6 +1,6 @@
 import React from 'react'
 import "./featuredProperties.css";
-
+// see 01:49:00 for featured property api !!!
 function featuredProperties() {
   return (
     <div className="fp">

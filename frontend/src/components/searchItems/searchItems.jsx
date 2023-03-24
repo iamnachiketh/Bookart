@@ -1,20 +1,21 @@
 import React from 'react'
 import "./searchItems.css";
-function searchItems() {
+import {Link} from "react-router-dom";
+function searchItems({item}) {
   return (
     <div className='searchItems'>
-        <img src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+        <img src={item.photos[0]}
         alt="" className="siImg" 
         />
         <div className="siDesc">
-        <h1 className="siTitle">Tower Street Apartments</h1>
-        <span className="siDistance">500m from center</span>
+        <h1 className="siTitle">{item.name}</h1>
+        <span className="siDistance">{item.distance}</span>
         <span className="siTaxiOp">Free airport taxi</span>
         <span className="siSubtitle">
           Studio Apartment with Air conditioning
         </span>
         <span className="siFeatures">
-          Entire studio • 1 bathroom • 21m² 1 full bed
+          {item.desc}
         </span>
         <span className="siCancelOp">Free cancellation </span>
         <span className="siCancelOpSubtitle">
@@ -22,14 +23,16 @@ function searchItems() {
         </span>
         </div>
         <div className="siDetails">
-            <div className="siRating">
+            {item.rating&&<div className="siRating">
                 <span>Excellent</span>
-                <button>8.9</button>
-            </div>
+                <button>{item.rating}</button>
+            </div>}
             <div className="DetailsText">
-                <span className="siPrice">$123</span>
+                <span className="siPrice">${item.chepestPrice}</span>
                 <span className="siTaxOp">Includes taxes and fees</span>
+                <Link to={`/hotel/${item._id}`}>
                 <button className="siCheckButton">See availability</button>
+                </Link>
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@ router.delete('/deleteahotel/:id',verifyAdmin,deleteHotel);
 //GET
 router.get('/findahotel/:id',getaHotel);
 
-//GET ALL Authentication is in 42:00 so go and look at it!!!
+//GET ALL Authentication is in 42:00 so go and look at it!!! and also have to add featured property... check 1:44:00
 router.get('/getallhotel',getallHotel);
 
 //////////
