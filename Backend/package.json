@@ -4,7 +4,7 @@
   "description": "booking-app",
   "main": "index.js",
   "scripts": {
-    "devstart": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "author": "nachiketha",
   "license": "ISC",
