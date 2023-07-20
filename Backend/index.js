@@ -48,8 +48,9 @@ app.use((err,req,res,next)=>{
   });
 });
 
+const port = process.env.PORT || 3001
 
-app.listen(3001,()=>{
+app.listen(port,"0.0.0.0",()=>{
     connect();
     console.log("running !!!");
 })
